@@ -1,6 +1,4 @@
-import {
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import {
   Arwes,
   SoundsProvider,
@@ -14,17 +12,36 @@ import AppLayout from "./pages/AppLayout";
 import { theme, resources, sounds } from "./settings";
 
 const App = () => {
-  return <ThemeProvider theme={createTheme(theme)}>
-    <SoundsProvider sounds={createSounds(sounds)}>
-      <Arwes animate background={resources.background.large} pattern={resources.pattern}>
-        {anim => (
-          <Router>
-            <AppLayout show={anim.entered} />
-          </Router>
-        )}
-      </Arwes>
-    </SoundsProvider>
-  </ThemeProvider>;
+  return (
+    <ThemeProvider theme={createTheme(theme)}>
+      <SoundsProvider sounds={createSounds(sounds)}>
+        <Arwes
+          animate
+          background={resources.background.large}
+          pattern={resources.pattern}>
+          {(anim) => (
+            <Router>
+              <AppLayout show={anim.entered} />
+            </Router>
+          )}
+        </Arwes>
+      </SoundsProvider>
+    </ThemeProvider>
+  );
 };
 
 export default App;
+
+var num = 4;
+function outer() {
+  var num = 2;
+  function inner() {
+    num++;
+    var num = 3;
+    console.log(num);
+    return;
+  }
+  console.log(num);
+  return;
+}
+console.log(num);
