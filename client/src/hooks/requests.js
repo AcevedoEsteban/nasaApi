@@ -1,5 +1,6 @@
 async function httpGetPlanets() {
   // TODO: Once API is ready.
+  fetch('')
   // Load planets and return as JSON.
 }
 
